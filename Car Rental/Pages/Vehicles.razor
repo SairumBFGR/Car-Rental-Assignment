@@ -1,0 +1,43 @@
+﻿@page "/"
+@using Car_Rental.Buisness.Classes;
+@inject Buisness b
+@using Car_Rental.Common.Enums
+
+<PageTitle>Car Rental</PageTitle>
+
+<h1>Vehicles</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>RegNo</th>
+            <th>Make</th>
+            <th>Odometer</th>
+            <th>Cost KM</th>
+            <th>Vehicle Type</th>
+            <th>$ Day</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+            @foreach (var vehicle in b.GetVehicles())
+            {
+                <tr>
+                <th>@vehicle.regNo</th>
+                <th>@vehicle.make</th>
+                <th>@vehicle.odometer</th>
+                <th>@vehicle.costKm</th>
+                <th>@vehicle.type</th>
+                <th>@vehicle.costday</th>
+                <th class="badge text-bg-@(vehicle.status == VehicleStatuses.Available ? "primary" : "danger")">@vehicle.status</th>
+                </tr>
+            }
+        
+    </tbody>
+</table>
+
+@code
+{
+    
+}

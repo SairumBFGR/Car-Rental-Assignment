@@ -1,0 +1,34 @@
+﻿@page "/Costumers"
+@using Car_Rental.Buisness.Classes;
+@inject Buisness b
+
+<PageTitle>Car Rental</PageTitle>
+
+<h1>Costumers</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>SSN</th>
+            <th>Last Name</th>
+            <th>First Name</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var costumer in b.GetCostumers())
+        {
+            <tr>
+                <th>@costumer.ssc</th>
+                <th>@costumer.firstName</th>
+                <th>@costumer.lastName</th>
+            </tr>
+        }
+
+    </tbody>
+</table>
+
+@code
+{
+
+}

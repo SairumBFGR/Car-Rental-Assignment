@@ -1,0 +1,44 @@
+﻿@page "/Bookings"
+@using Car_Rental.Buisness.Classes;
+@inject Buisness b
+
+<PageTitle>Car Rental</PageTitle>
+
+<h1>Bookings</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>RegNo</th>
+            <th>Costumer</th>
+            <th>Km Rented</th>
+            <th>Km returned</th>
+            <th>Rented</th>
+            <th>Returned</th>
+            <th>Cost</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var booking in b.GetBookings())
+        {
+            <tr>
+                <th>@booking.regNo</th>
+                <th>@booking.costumer</th>
+                <th>@booking.kmRented</th>
+                <th>@booking.kmReturn</th>
+                <th>@booking.rented</th>
+                <th>@booking.returned</th>
+                <th>@booking.cost</th>
+                <th class="badge text-bg-@(booking.status == Common.Enums.VehicleStatuses.Closed ? "success" : "danger")">@booking.status</th>
+            </tr>
+        }
+
+    </tbody>
+</table>
+
+@code
+{
+
+}
